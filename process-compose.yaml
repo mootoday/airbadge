@@ -1,0 +1,11 @@
+version: "0.5"
+is_strict: true
+processes:
+  init_dependencies:
+    command: pnpm install
+  dev_all:
+    # Note: Split this into multiple processes to see logs for individual apps/packages more easily
+    command: pnpm dev
+    depends_on:
+      init_dependencies:
+        condition: process_completed_successfully
